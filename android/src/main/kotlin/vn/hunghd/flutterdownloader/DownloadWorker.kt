@@ -196,12 +196,12 @@ class DownloadWorker(context: Context, params: WorkerParameters) :
         taskDao?.updateTask(id.toString(), DownloadStatus.RUNNING, task.progress)
 
         // automatic resume for partial files. (if the workmanager unexpectedly quited in background)
-        val saveFilePath = savedDir + File.separator + filename
-        val partialFile = File(saveFilePath)
-        if (partialFile.exists()) {
-            isResume = true
-            log("exists file for " + filename + "automatic resuming...")
-        }
+        // val saveFilePath = savedDir + File.separator + filename
+        // val partialFile = File(saveFilePath)
+        // if (partialFile.exists()) {
+        //     isResume = true
+        //     log("exists file for " + filename + "automatic resuming...")
+        // }
         return try {
             downloadFile(applicationContext, url, savedDir, filename, headers, isResume, timeout)
             cleanUp()
